@@ -1,0 +1,42 @@
+ <!DOCTYPE html>
+ <html lang="en">
+   <head>
+     <meta charset="utf-8">
+     <title>Lista de livros</title>
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+     <link rel="stylesheet" href="css/index.css" />
+
+    </head>
+ 
+   <body>
+  <div id="app">
+       <div v-if="usuario.tipo == 'admin'">
+          <h1>Bem vindo à área administrativa</h1>
+       </div>
+       <div v-else-if="usuario.tipo == 'professor'">
+           <h1>Bem vindo à área do professor</h1>
+       </div>
+       <div v-else>
+           <h1>Bem vindo à área do aluno</h1>
+       </div>
+
+       <div v-show="!feedback.enviado">
+           <h3>Envie-nos seu feedback.</h3>
+           <input type="text" placeholder="Digite aqui...">
+       </div>
+   </div>
+
+  <!--v-show = caso a condição seja falsa, ele tem sua propriedade CSS display alterada para none.-->
+  <!--  se o elemento tende a mudar de visibilidade várias vezes, então deve-se usar a v-show; 
+  por outro lado, se a condição de exibição variar pouco durante a execução da aplicação, então
+  a diretiva v-if é mais adequada.-->
+
+   </body>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.8/vue.js"></script>
+   <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+   <script type="text/javascript" src="js/index.js"></script>
+</html>
+
+<!--Em suma, nosso objeto  Vue constitui o meio de campo que o framework faz uso para efetuar o binding (associação) do nosso modelo à nossa 
+view, e vice-versa.
+ Nossa aplicação segue, então, o padrão  Model-View-ViewModel (MVVM), onde a instância  Vue representa a parte  ViewModel desse padrão.!-->
