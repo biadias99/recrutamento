@@ -3,11 +3,23 @@
 <center>
 <router-link to="/character">
 
+<!--
+Eu queria fazer tipo isso
+<div v-for="personagem in personagens">
+
+<md-card md-with-hover>
+<div class="md-title">{{personagem.name}}</div>
+...
+
+Mas essa sintaxe não dá certo. Você tem alguma ideia de como arrumar? 
+-->
+<div>
+
 <md-card md-with-hover>
 
  <md-card-header>
     <div class="md-title">Capitão América</div>
-    <div class="md-subhead">Herói super top</div>
+    <div class="md-subhead">Herói da Marvel</div>
   </md-card-header>
 
   <md-card-media>
@@ -17,6 +29,8 @@
   </md-card-media>
 
 </md-card>
+
+</div>
 
 </router-link>
 
@@ -34,14 +48,29 @@ export default {
     return{
       personagens: []
     }
+    
   },
   mounted(){
+    
       axios.get('http://gateway.marvel.com/v1/public/characters?ts=1&apikey=d5a6bb52c442c8546422f4f8c5ba5946&hash=37e650de311864dd80717e74c9e66417')
-      .then( function(response){
-        console.log('Data:',response.data);
-        //this.personagens=response.data;
+      .then(function (response){
+        console.log('Data:', response.data);
+        /*
+        this.personagens=response.data; 
+
+        essa linha também não dá certo, no console aparece o seguinte erro:
+        Error ReferenceError: personagens is not defined
+        at eval (list-characters.vue?9fff:57)
+        at <anonymous>
+
+        mas o response.data contém os personagens corretos
+
+        esse é o maior problema atualmente, relacionar "personagens" daqui com o "personagens"
+        do for lá em cima, se puder me dar uma luz, eu agradeço hahahah
+
+        */
       })
-      .catch(  function(error){
+      .catch(function (error){
         console.log('Error',error)
       })
   }
@@ -50,6 +79,10 @@ export default {
 
 <!-- scoped = declarações css só pode ser utilizada por esse component-->
 <style scoped>
+body{
+  color:black;
+}
+
 .md-card{
     width:14%;
     margin:1%;
