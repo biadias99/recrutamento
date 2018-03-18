@@ -3,27 +3,17 @@
 <center>
 <router-link to="/character">
 
-<!--
-Eu queria fazer tipo isso
-<div v-for="personagem in personagens">
-
-<md-card md-with-hover>
-<div class="md-title">{{personagem.name}}</div>
-...
-
-Mas essa sintaxe não dá certo. Você tem alguma ideia de como arrumar? 
--->
 <div>
 
-<md-card md-with-hover>
+<md-card md-with-hover v-for="personagem in personagens" :key="personagem.id">
 
  <md-card-header>
-    <div class="md-title">Capitão América</div>
-    <div class="md-subhead">Herói da Marvel</div>
+    <div class="md-title">{{personagem.name}}</div>
+    <!--<div class="md-subhead">{{personagem.}}</div>-->
   </md-card-header>
 
   <md-card-media>
-    <img src="../assets/capitaoamerica.jpg" alt="People">
+    <img :src="personagem.thumbnail.path + '.' + personagem.thumbnail.extension" alt="Heroe Marvel">
 
     <md-ink-ripple></md-ink-ripple>
   </md-card-media>
@@ -44,31 +34,18 @@ Mas essa sintaxe não dá certo. Você tem alguma ideia de como arrumar?
 import axios from 'axios'
 
 export default {
-  data(){
-    return{
-      personagens: []
-    }
-    
-  },
+  data: () => ({
+      personagens: [],    
+  }),
+
   mounted(){
     
       axios.get('http://gateway.marvel.com/v1/public/characters?ts=1&apikey=d5a6bb52c442c8546422f4f8c5ba5946&hash=37e650de311864dd80717e74c9e66417')
-      .then(function (response){
-        console.log('Data:', response.data);
-        /*
-        this.personagens=response.data; 
+      .then( (response) => {
+        console.log('Data:', response.data.data.results);
 
-        essa linha também não dá certo, no console aparece o seguinte erro:
-        Error ReferenceError: personagens is not defined
-        at eval (list-characters.vue?9fff:57)
-        at <anonymous>
-
-        mas o response.data contém os personagens corretos
-
-        esse é o maior problema atualmente, relacionar "personagens" daqui com o "personagens"
-        do for lá em cima, se puder me dar uma luz, eu agradeço hahahah
-
-        */
+        this.personagens = response.data.data.results; 
+       
       })
       .catch(function (error){
         console.log('Error',error)
@@ -84,9 +61,11 @@ body{
 }
 
 .md-card{
-    width:14%;
+    width:190px;
+    height: 300px;
     margin:1%;
     display:inline-block;
+    
 }
 
 .md-title{
