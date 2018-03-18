@@ -1,11 +1,14 @@
 <template>
 <div>
+
 <center>
+<input type="text" v-model="search" placeholder="Digite o nome do herói...">
+
 <router-link to="/character">
 
 <div>
 
-<md-card md-with-hover v-for="personagem in personagens" :key="personagem.id">
+<md-card md-with-hover v-for="personagem in filtrarPersonagens" :key="personagem.id">
 
  <md-card-header>
     <div class="md-title">{{personagem.name}}</div>
@@ -35,7 +38,8 @@ import axios from 'axios'
 
 export default {
   data: () => ({
-      personagens: [],    
+      personagens: [],
+      search: ''
   }),
 
   mounted(){
@@ -50,6 +54,13 @@ export default {
       .catch(function (error){
         console.log('Error',error)
       })
+  },
+  computed: {
+    filtrarPersonagens: function(){
+      return this.personagens.filter((personagem) => {
+        return personagem.name.match(this.search);
+      });
+    }
   }
 }
 </script>
@@ -72,63 +83,11 @@ body{
     font-size:medium;
 }
 
-.header {
-  color: #555;
-  height: 100%;
-  text-align: center;
-  padding-top: 5px;
-}
-
-.header .cover-heading {
-  font-size: 46px;
-  color: #F25C00;
-  margin-top: 1.6rem;
-  margin-bottom: 1.6rem;
-}
-.removeInput {
-  font-size: 36px;
-  color: #F9A603;
-  cursor: pointer;
-  top: 0;
-  right: 0;
-  position: absolute;
-  -webkit-transform: rotate(45deg);
-  transform: rotate(45deg);
-}
-.searchForm {
-  margin-bottom: 2.6rem;
-  position: relative;  
-}
-
-
-/* Material Design code below */
-.raised-button {
-    display: inline-block;
-    text-align: center;
-    line-height: 1;
-    cursor: pointer;
-    -webkit-appearance: none;
-    transition: all 0.25s ease-out;
-    vertical-align: middle;
-    border: 1px solid transparent;
-    border-radius: 2px;
-    padding: 0.85em 1em;
-    margin: 0 1rem 1rem 0;
-    font-size: 0.9rem;
-    background: #F9A603;
-    color: #FAFAFA;
-}
-.raised-button:hover, .raised-button:focus {
-    background: #E69903;
-    color: #FFF;
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.13), 0 1px 5px 0 rgba(0, 0, 0, 0.08);
-}
-
-
 [type="text"], [type="password"], [type="date"], [type="datetime"], [type="datetime-local"], [type="month"], [type="week"], [type="email"], [type="number"], [type="search"], [type="tel"], [type="time"], [type="url"], [type="color"], textarea {
+     outline: 0;
     display: block;
     box-sizing: border-box;
-    width: 100%;
+    width: 60%;
     height: 2.4375rem;
     padding: 0.5rem;
     border: 0;
