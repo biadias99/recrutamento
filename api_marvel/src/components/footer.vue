@@ -1,7 +1,7 @@
 <template>
 
 <md-toolbar class="md-dense">
-  <h4 class="texto">Data provided by Marvel. © 2014 Marvel</h4>
+  <h4 class="texto">Data provided by Marvel. © 2018 MARVEL</h4>
 </md-toolbar>
 
 </template>

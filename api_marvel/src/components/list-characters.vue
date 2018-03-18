@@ -18,16 +18,21 @@
   <md-card-media>
     <img :src="personagem.thumbnail.path + '.' + personagem.thumbnail.extension" alt="Heroe Marvel">
 
-    <md-ink-ripple></md-ink-ripple>
   </md-card-media>
 
 </md-card>
 
 </div>
-
 </router-link>
 
+<div v-if="filtrarPersonagens.length <= 0">
+<h2>Desculpe, não foi encontrado nenhum herói :(</h2>
+<h2>Tente novamente!</h2>
+</div> 
+
 </center>
+<Footer></Footer>
+
 </div>
 
 </template>
@@ -35,6 +40,7 @@
 <script>
 //http://gateway.marvel.com/v1/public/characters?ts=1&apikey=d5a6bb52c442c8546422f4f8c5ba5946&hash=37e650de311864dd80717e74c9e66417
 import axios from 'axios'
+import Footer from './footer.vue'
 
 export default {
   data: () => ({
@@ -44,7 +50,7 @@ export default {
 
   mounted(){
     
-      axios.get('http://gateway.marvel.com/v1/public/characters?ts=1&apikey=d5a6bb52c442c8546422f4f8c5ba5946&hash=37e650de311864dd80717e74c9e66417')
+      axios.get('https://gateway.marvel.com/v1/public/characters?nameStartsWith=c&limit=50&ts=1&apikey=d5a6bb52c442c8546422f4f8c5ba5946&hash=37e650de311864dd80717e74c9e66417')
       .then( (response) => {
         console.log('Data:', response.data.data.results);
 
@@ -58,9 +64,13 @@ export default {
   computed: {
     filtrarPersonagens: function(){
       return this.personagens.filter((personagem) => {
-        return personagem.name.match(this.search);
+        return personagem.name.toUpperCase().match(this.search.toUpperCase());
       });
     }
+  },
+  components: {
+    Footer
+    
   }
 }
 </script>
@@ -69,6 +79,10 @@ export default {
 <style scoped>
 body{
   color:black;
+}
+
+.material-icons{
+  font-size:30px;
 }
 
 .md-card{
@@ -112,12 +126,16 @@ input[type="text"], input[type="password"], input[type="date"], input[type="date
 
 input[type="text"]:focus, input[type="password"]:focus, input[type="date"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="month"]:focus, input[type="week"]:focus, input[type="email"]:focus, input[type="number"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="time"]:focus, input[type="url"]:focus, input[type="color"]:focus, textarea:focus {
   border: none;
-  border-bottom: 2px solid #F9A603;
+  border-bottom: 2px solid blue;
   box-shadow: none;
   position: relative;
   top: 1px;
   background: transparent;
 }
 
+h2{
+  color:#152840;
+  font-family: inherit;
 
+}
 </style>
