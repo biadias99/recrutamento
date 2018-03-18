@@ -14,12 +14,12 @@ export default new Router({
       component: HelloWorld
     },
     {
-      path: '/character',
+      path: '/personagens/:id',
       name: 'character',
       component: Character
     },
     {
-      path: '/list-characters',
+      path: '/personagens',
       name: 'list-characters',
       component: ListCharacters
     },

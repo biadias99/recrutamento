@@ -4,7 +4,7 @@
 <center>
 <input type="text" v-model="search" placeholder="Digite o nome do herói...">
 
-<router-link to="/character">
+<router-link to="/personagens">
 
 <div>
 

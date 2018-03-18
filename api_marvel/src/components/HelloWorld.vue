@@ -8,7 +8,7 @@
         <div class="slide slide--3"></div>
         </agile>
         <md-toolbar class="md-dense">
-        <router-link tag="md-button" to="/list-characters" class="botao md-raised">
+        <router-link tag="md-button" to="/personagens" class="botao md-raised">
         Clique aqui para conhecer os heróis da Marvel!</router-link>
         </md-toolbar>
     </main>
