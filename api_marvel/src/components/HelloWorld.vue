@@ -2,7 +2,7 @@
    <main>
         <agile :arrows="false" :speed="1000"
         :timing="'linear'" :fade="true" :dots="false"
-        :autoplay="true" :pauseOnHover="false">
+        :autoplay="true" :pauseOnHover="true">
         <div class="slide slide--1"></div>
         <div class="slide slide--2"></div>
         <div class="slide slide--3"></div>

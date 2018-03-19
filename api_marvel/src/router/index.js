@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import Character from '@/components/character'
 import ListCharacters from '@/components/list-characters'
+import Alphabet from '@/components/alphabet'
 
 Vue.use(Router)
 
@@ -14,12 +15,12 @@ export default new Router({
       component: HelloWorld
     },
     {
-      path: '/personagens/:id',
+      path: '/personagens/:letra/:id',
       name: 'character',
       component: Character
     },
     {
-      path: '/personagens',
+      path: '/personagens/:letra',
       name: 'list-characters',
       component: ListCharacters
     },
@@ -27,6 +28,11 @@ export default new Router({
       path: '/home',
       name: 'HelloWorld',
       component: HelloWorld
+    },
+    {
+      path: '/personagens',
+      name: 'alphabet',
+      component: Alphabet
     }
 
   ]

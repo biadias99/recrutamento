@@ -1,11 +1,11 @@
 <template>
 
 <md-toolbar class="navbar">
-  <md-button class="md-icon-button md-raised md-warn">
     <router-link to="/">
-    <md-icon class="home">home</md-icon>
+    <md-button class="md-icon-button md-raised md-warn">
+      <md-icon class="home">home</md-icon>
+    </md-button>
     </router-link>
-  </md-button>
 
   <h2 class="md-title" style="flex: 1">Heróis da Marvel</h2>
 
@@ -38,6 +38,7 @@ export default {
 
 .md-title{
     color:white;
+    margin-left:15px;
 }
 
 .md-icon{

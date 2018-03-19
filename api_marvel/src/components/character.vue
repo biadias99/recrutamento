@@ -1,9 +1,12 @@
 <template>
-   <!-- <div>
-    <p>{{personagem.name}}</P>
-    <img :src="personagem.thumbnail.path + '.' + personagem.thumbnail.extension" alt="Heroe Marvel">
-    </div>-->
     <div id="app">
+    <router-link :to="{ name: 'list-characters', params: {letra}}">
+    <md-button class="md-undo-button md-raised">
+        <!--<i class="material-icons">undo</i>-->
+        Voltar
+    </md-button>
+    </router-link>
+
         <div class="md-layout personagem">
             <div class="md-layout-item md-size-30">
             </div>
@@ -43,6 +46,7 @@ export default {
     data(){
         return{
             id: this.$route.params.id,
+            letra: this.$route.params.letra,
             personagem: {}
         }
     },
@@ -96,7 +100,6 @@ export default {
     .personagem{
         margin-left:17%;
         margin-right:10%;
-        margin-top:20px;
         
     }
     .imagem{
