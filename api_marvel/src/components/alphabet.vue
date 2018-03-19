@@ -15,6 +15,13 @@
         </router-link>
     </span>
     </div>
+
+    <div id="imagem">
+        <br>
+        <center>
+        <img src="../assets/ironman.png" width="300px">
+        </center>
+    </div>
 </div>
 </template>
 
@@ -80,4 +87,5 @@ export default {
         margin-left: 10%;
         margin-right: 10%;
     }
+
 </style>
