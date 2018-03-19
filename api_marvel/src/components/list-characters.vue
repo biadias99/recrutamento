@@ -4,7 +4,6 @@
 <center>
 <input type="text" v-model="search" placeholder="Digite o nome do herói...">
 
-<router-link to="/personagens">
 
 <div>
 
@@ -23,7 +22,6 @@
 </md-card>
 
 </div>
-</router-link>
 
 <div v-if="filtrarPersonagens.length <= 0">
 <h2>Desculpe, não foi encontrado nenhum herói :(</h2>
@@ -71,7 +69,13 @@ export default {
   components: {
     Footer
     
+  },
+  methods: {
+    chamarPersonagem: function (id) {
+      
+    }
   }
+
 }
 </script>
 
